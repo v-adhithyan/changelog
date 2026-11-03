@@ -1,4 +1,5 @@
 {% extends "public_v3/base.html" %}
+{% load static %}
 {% load humanize %}
 {% load frontend_tags %}
 {% block content %}
@@ -11,7 +12,7 @@
                 {% if company.pinnedchangelog.changelog.featured_image %}
                     <img src="{{ company.pinnedchangelog.changelog.featured_image.url }}" alt="Image">
                 {% else %}
-                    <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/692x392.png" alt="Image">
+                    <img src="{% static 'branding/tandora-illustration.png' %}" alt="Image">
                 {% endif %}
             </div>
             <div class="col-lg-6 col-xl-5">
@@ -23,7 +24,7 @@
                         <div class="content-body">
                             <h2>{{ company.pinnedchangelog.changelog.title|truncatechars:30 }}</h2>
                             <p>{{ company.pinnedchangelog.changelog.content|extract_text_and_truncate }}</p>
-                            <a href="/{{ company_name|slugify }}/{{ terminology|slugify }}/{{ latest_changelog.slug }}" class="">Read <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/read.svg" alt="read"> </a>
+                            <a href="/{{ company_name|slugify }}/{{ terminology|slugify }}/{{ latest_changelog.slug }}" class="">Read <img src="{% static 'public/icons/read.svg' %}" alt="read"> </a>
                         </div>
                     </div>
             </div>
@@ -40,29 +41,32 @@
                     {% if changelog.featured_image %}
                     <img src="{{ changelog.featured_image.url }}" alt="Image">
                     {% else %}
-                    <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/360x237.png" class="blog-img" alt="Blog">
+                    <img src="{% static 'branding/tandora-illustration.png' %}" class="blog-img" alt="Blog">
                     {% endif %}
                     <div class="content">
                         <h6>{{ changelog.created_at|naturaltime }}</h6>
                         <h2>{{ changelog.title|truncatechars:30 }}</h2>
                         <div class="body-btn">
-                            <a href="javascript:void(0)" class="feature-btn" style="color: {{ changelog.category.color }}; border: 1px solid {{ changelog.category.color }};">>{{ changelog.category }}</a>
+                            <a href="javascript:void(0)" class="feature-btn" style="color: {{ changelog.category.color }}; border: 1px solid {{ changelog.category.color }};">{{ changelog.category }}</a>
                             <!--a href="javascript:void(0)" class="feature-btn impr">improvement</a-->
                         </div>
                         <p>{{ changelog.content|extract_text_and_truncate }}</p>
                         <div class="read">
-                            <a href="/{{ company_name|slugify }}/{{ terminology|slugify }}/{{ changelog.slug }}">Read <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/read.svg" alt="Arrow"></a>
-                            <h5> <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/eye.svg" alt="Eye"> {{ changelog.view_count }}</h5>
+                            <a href="/{{ company_name|slugify }}/{{ terminology|slugify }}/{{ changelog.slug }}">Read <img src="{% static 'public/icons/read.svg' %}" alt="Arrow"></a>
+                            <h5> <img src="{% static 'branding/eye.svg' %}" alt="Eye"> {{ changelog.view_count }}</h5>
                         </div>
                     </div>
                 </div>
             </div>
+            {% empty %}
+            <div class="col-12 empty-state">No updates published yet.</div>
             {% endfor %}
         </div>
+        {% if changelogs.paginator.num_pages > 1 %}
         <div class="blog-pagination">
             <ul>
                 {% if changelogs.has_previous %}
-                <li><a href="?page={{ changelogs.previous_page_number }}" class="prev"> <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/pagi-arrow.svg" alt="Arrow"> Prev</a></li>
+                <li><a href="?page={{ changelogs.previous_page_number }}" class="prev"> <img src="{% static 'public/icons/pagi-arrow.svg' %}" alt="Arrow"> Prev</a></li>
                 {% endif %}
                 <!--li><a href="javascript:void(0)" class="num">1</a></li-->
                 <li><a href="javascript:void(0)" class="num active">{{ changelogs.number }}</a></li>
@@ -71,10 +75,11 @@
                 <li><a href="javascript:void(0)" class="num d-none d-md-block">11</a></li>
                 <li><a href="javascript:void(0)" class="num d-none d-md-block">12</a></li-->
                 {% if changelogs.has_next %}
-                <li><a href="?page={{ changelogs.next_page_number }}" class="next active"> Next <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/pagi-arrow.svg" alt="Arrow"> </a></li>
+                <li><a href="?page={{ changelogs.next_page_number }}" class="next active"> Next <img src="{% static 'public/icons/pagi-arrow.svg' %}" alt="Arrow"> </a></li>
                 {% endif %}
             </ul>
         </div>
+        {% endif %}
     </div>
 </div>
 <script defer>

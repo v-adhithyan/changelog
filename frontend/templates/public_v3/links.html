@@ -1,4 +1,5 @@
 {% extends "public_v3/base.html" %}
+{% load static %}
 {% load humanize %}
 {% block content %}
 <script>
@@ -8,8 +9,7 @@
         xhr.send({});
     }
 </script>
-<div class="container">
-    <div style="margin-top: 80px;"></div>
+<div class="container public-links">
     {% for link in all_links %}
         <div class="row" style="margin-top: 20px; margin-left: 5px; margin-right: 5px;">
             <a href="{{ link.url }}" onclick="trackClick({{ link.id }});" target="_blank" role="button" class="btn btn-dark btn-lg btn-block active">{{ link.title }}</a>

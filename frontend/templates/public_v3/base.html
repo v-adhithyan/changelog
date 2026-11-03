@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load frontend_tags %}
+{% load static %}
 <html lang="en">
 
 <head>
@@ -33,11 +34,9 @@
     {% endif %}
     <meta name=twitter:card content=summary_large_image>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/favicon.svg" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/css/all.min.css">
-    <link rel="stylesheet" href="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/css/animate.css">
-    <link rel="stylesheet" href="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/css/style.css">
+    <link href="{% static 'branding/tandora-logo.png' %}" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'public/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'public/style.css' %}">
 </head>
 
 <body>
@@ -49,19 +48,19 @@
                 {% if company.settings.company_logo %}
                 <a href="{{ company.website }}"><img src="{{ company.settings.company_logo }}" alt="Logo" width="36" height="38"></a>
                 {% else %}
-                <a href="{{ company.website }}"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/logo.svg" alt="Logo" width="36" height="38"></a>
+                <a href="{{ company.website }}"><img src="{% static 'branding/tandora-logo.png' %}" alt="Logo" width="36" height="38"></a>
                 {% endif %}
             </div>
             <div class="right">
                 {% if search_enabled %}
                 <div class="header-search d-none d-md-block">
                     <input type="text" name="search" placeholder="Search">
-                    <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/search.svg" alt="">
+                    <img src="{% static 'public/icons/search.svg' %}" alt="">
                 </div>
                 <div class="d-md-none">
                     <a class="open-btn1" href="javascript:void(0)">
-                        <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/search.svg" class="search-open" alt="Search" />
-                        <img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/cancel.svg" class="search-close" alt="Search" />
+                        <img src="{% static 'public/icons/search.svg' %}" class="search-open" alt="Search" />
+                        <img src="{% static 'public/icons/cancel.svg' %}" class="search-close" alt="Search" />
                     </a>
                     <div id="search-wrap">
                         <form role="search" method="get" id="searchform" action="">
@@ -103,7 +102,7 @@
             {% if company.settings.company_logo %}
             <a href="{{ company.website }}" class="logo"><img src="{{ company.settings.company_logo }}" alt="Logo" width="145" height="38"></a>
             {% else %}
-            <a href="{{ company.website }}" class="logo"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/logo.svg" alt="Logo"></a>
+            <a href="{{ company.website }}" class="logo"><img src="{% static 'branding/tandora-logo.png' %}" alt="Logo"></a>
             {% endif %}
             <div class="subscribe-btn">
                 <a  href="{% url 'public-rss-feed' company=company_name changelog_terminology=terminology%}" target="_blank">Subscribe to RSS Feed</a>
@@ -116,11 +115,11 @@
             <div class="Copyright">
                 <p>Powered by <a href="https://tandora.co/?from={{ company_name }}&changelog={{  changelog.title }}">Tandora</a></p>
                 <ul>
-                    <li><a href="https://facebook.com/tandoraco"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/facebook.svg" alt="Facebook"></a></li>
-                    <li><a href="https://instagram.com/tandoraco"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/instagram.svg" alt="Instagram"></a></li>
-                    <li><a href="https://twitter.com/tandoraco"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/twitter.svg" alt="Twitter"></a></li>
-                    <li><a href="https://github.com/tandoraco"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/github.svg" alt="Github"></a></li>
-                    <li><a href="https://linkedin.com/company/tandora"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/images/linkedin.svg" alt="Linkedin"></a></li>
+                    <li><a href="https://facebook.com/tandoraco">Facebook</a></li>
+                    <li><a href="https://instagram.com/tandoraco">Instagram</a></li>
+                    <li><a href="https://twitter.com/tandoraco">Twitter</a></li>
+                    <li><a href="https://github.com/tandoraco">Github</a></li>
+                    <li><a href="https://linkedin.com/company/tandora">Linkedin</a></li>
                 </ul>
             </div>
         </div>
@@ -128,10 +127,8 @@
     {% endif %}
 </footer>
 
+<script src="{% static 'public/public.js' %}" defer></script>
 </body>
-<script src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/js/jquery-3.5.1.min.js"></script>
-<script src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/js/bootstrap.min.js"></script>
-<script src="https://tandora-production.s3.amazonaws.com/assets/assets/public_v3/js/custom.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMRBDH48NE"></script>
 <script>

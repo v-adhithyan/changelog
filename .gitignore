@@ -445,3 +445,7 @@ newrelic.ini
 !frontend/static/
 !frontend/static/branding/
 !frontend/static/branding/**
+
+# Public page styles and vendored dependencies.
+!frontend/static/public/
+!frontend/static/public/**
