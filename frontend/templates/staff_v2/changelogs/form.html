@@ -1,4 +1,5 @@
 {% extends "staff_v2/base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="main-wrapper">
@@ -11,10 +12,10 @@
                         <h2>{{ title }} <br><span>Changelog</span></h2>
                         <!--p>Lorem Ipsum is simply dummy text of <br>the printing</p-->
                     </div>
-                    {% if title == 'create' %}
+                    {% if title|lower == 'create' %}
                     <div class="profile-image">
-                        <img src="https://tandora-production.s3.amazonaws.com/assets/assets/Tandora-img.svg" alt="profile-image">
-                    </div>a
+                        <img src="{% static 'branding/tandora-illustration.png' %}" alt="profile-image">
+                    </div>
                     {% endif %}
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">

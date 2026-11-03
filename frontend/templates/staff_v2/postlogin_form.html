@@ -1,5 +1,6 @@
 {% extends "staff_v2/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
 <div class="main-wrapper">
     {% include 'staff_v2/menu_postlogin.html' %}
@@ -13,7 +14,10 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                     <div class="title">
                         <h2>{{ action_name }} <br><span>{{ model_name }}</span></h2>
-                        <!--p>Lorem Ipsum is simply dummy text of <br>the printing</p-->
+
+                    </div>
+                    <div class="profile-image">
+                        <img src="{% static 'branding/tandora-illustration.png' %}" alt="Blue announcement drum with product update cards">
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">

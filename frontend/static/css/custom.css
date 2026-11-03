@@ -217,7 +217,7 @@
    position: relative;
 }
 .title::after {
-  background-image: url(https://tandora-production.s3.amazonaws.com/assets/assets/background.svg);
+  background-image: url(../branding/background.svg);
   position: absolute;
   content: "";
   height: 527px;
@@ -820,3 +820,7 @@ p.check_box {
 }
 
 
+
+/* Restored local brand asset; keep square source within the navigation. */
+header .navbar .navbar-brand img { width: 72px; height: 72px; object-fit: contain; }
+@media (max-width: 767px) { header .navbar .navbar-brand img { width: 56px; height: 56px; padding: 0; } }

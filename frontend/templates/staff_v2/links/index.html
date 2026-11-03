@@ -1,4 +1,5 @@
 {% extends "staff_v2/base.html" %}
+{% load static %}
 {% block content %}
 <div class="main-wrapper">
     {% include 'staff_v2/menu_postlogin.html' %}
@@ -24,12 +25,12 @@
                                         <ul>
                                             <li>
                                                 <button onclick="location.href='/staff/manage/links/edit-link/{{ link.id }}'">
-                                                    <img src="https://tandora-production.s3.amazonaws.com/assets/assets/edit.svg"><span>Edit</span>
+                                                    <img src="{% static 'branding/edit.svg' %}"><span>Edit</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button onclick="location.href='/staff/manage/links/delete-link/{{ link.id }}'">
-                                                    <img src="https://tandora-production.s3.amazonaws.com/assets/assets/delete.svg"><span>Delete</span>
+                                                    <img src="{% static 'branding/delete.svg' %}"><span>Delete</span>
                                                 </button>
                                             </li>
                                         </ul>

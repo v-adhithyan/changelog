@@ -21,8 +21,8 @@
         <div class="container mb-3 mt-3">
             <!--div class="row d-flex  justify-content-end">
                 <div class="list-button ">
-                    <button class="btn btn-primary btn-list"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/list.svg"></button>
-                    <button class="btn btn-primary btn-grid"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/view.svg"></button>
+                    <button class="btn btn-primary btn-list"><img src="{% static 'branding/list.svg' %}"></button>
+                    <button class="btn btn-primary btn-grid"><img src="{% static 'branding/view.svg' %}"></button>
                 </div>
             </div-->
         </div>
@@ -38,13 +38,13 @@
                             <div class="listing-button">
                                 <ul>
                                     <li>
-                                        <button onclick="location.href='/staff/edit-changelog/{{ changelog.id }}'"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/edit.svg"><span>Edit</span></button>
+                                        <button onclick="location.href='/staff/edit-changelog/{{ changelog.id }}'"><img src="{% static 'branding/edit.svg' %}"><span>Edit</span></button>
                                     </li>
                                     <li>
-                                        <button onclick="location.href='/staff/changelog/{{ changelog.slug }}'"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/eye.svg"><span>View</span></button>
+                                        <button onclick="location.href='/staff/changelog/{{ changelog.slug }}'"><img src="{% static 'branding/eye.svg' %}"><span>View</span></button>
                                     </li>
                                     <li>
-                                        <button onclick="location.href='/staff/delete-changelog/{{ changelog.id }}'"><img src="https://tandora-production.s3.amazonaws.com/assets/assets/delete.svg"><span>Delete</span></button>
+                                        <button onclick="location.href='/staff/delete-changelog/{{ changelog.id }}'"><img src="{% static 'branding/delete.svg' %}"><span>Delete</span></button>
                                     </li>
                                 </ul>
                             </div>

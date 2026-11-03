@@ -1,5 +1,6 @@
 {% extends "staff_v2/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
 <div class="main-wrapper">
     {% include 'staff_v2/menu_prelogin.html' %}
@@ -12,7 +13,7 @@
                         <p>Existing users <br><a href="/login">Sign In Here! </a></p>
                     </div>
                     <div class="profile-image">
-                        <!--img src="https://tandora-production.s3.amazonaws.com/assets/assets/black-friday-deal-21.jpeg" alt="profile-image"-->
+                        <img src="{% static 'branding/tandora-illustration.png' %}" alt="Blue announcement drum with product update cards">
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">

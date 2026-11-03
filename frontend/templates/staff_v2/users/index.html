@@ -1,4 +1,5 @@
 {% extends "staff_v2/base.html" %}
+{% load static %}
 {% block content %}
 <div class="main-wrapper">
     {% include 'staff_v2/menu_postlogin.html' %}
@@ -22,7 +23,7 @@
                                         <ul>
                                             <li>
                                                 <button onclick="location.href='/staff/manage/users/edit-user/{{ user.id }}'">
-                                                    <img src="https://tandora-production.s3.amazonaws.com/assets/assets/edit.svg"><span>Edit</span>
+                                                    <img src="{% static 'branding/edit.svg' %}"><span>Edit</span>
                                                 </button>
                                             </li>
                                             {% if user.is_active %}

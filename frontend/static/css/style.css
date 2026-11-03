@@ -995,7 +995,7 @@ header {
           .main-wrapper .signin-page .title p a {
             font-size: 14px; } }
     .main-wrapper .signin-page .title:after {
-      background-image: url(https://tandora-production.s3.amazonaws.com/assets/assets/background.svg);
+      background-image: url(../branding/background.svg);
       position: absolute;
       content: "";
       height: 527px;

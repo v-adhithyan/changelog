@@ -440,3 +440,8 @@ newrelic.ini
 # Track the local Docker startup script.
 !commons/scripts/
 !commons/scripts/entrypoint-dev.sh
+
+# Keep restored brand artwork and icons in the repository.
+!frontend/static/
+!frontend/static/branding/
+!frontend/static/branding/**
