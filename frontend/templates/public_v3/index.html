@@ -19,12 +19,12 @@
                     <div class="blog-content">
                         <div class="content-header">
                             <h6>{{ company.pinnedchangelog.changelog.created_at|naturaltime }}</h6>
-                            <a href="javascript:void(0)" class="feature-btn" style="color: {{ latest_changelog.category.color }}; border: 1px solid {{ latest_changelog.category.color }};">{{ company.pinnedchangelog.changelog.category }}</a>
+                            <a href="javascript:void(0)" class="feature-btn" style="color: {{ company.pinnedchangelog.changelog.category.color }}; border: 1px solid {{ company.pinnedchangelog.changelog.category.color }};">{{ company.pinnedchangelog.changelog.category }}</a>
                         </div>
                         <div class="content-body">
                             <h2>{{ company.pinnedchangelog.changelog.title|truncatechars:30 }}</h2>
                             <p>{{ company.pinnedchangelog.changelog.content|extract_text_and_truncate }}</p>
-                            <a href="/{{ company_name|slugify }}/{{ terminology|slugify }}/{{ latest_changelog.slug }}" class="">Read <img src="{% static 'public/icons/read.svg' %}" alt="read"> </a>
+                            <a href="/{{ company_name|slugify }}/{{ terminology|slugify }}/{{ company.pinnedchangelog.changelog.slug }}" class="">Read <img src="{% static 'public/icons/read.svg' %}" alt="read"> </a>
                         </div>
                     </div>
             </div>
