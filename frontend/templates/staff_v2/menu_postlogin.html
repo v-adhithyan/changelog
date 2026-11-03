@@ -27,4 +27,4 @@
   </div>
 </aside>
 <div class="workspace-topbar"><span class="workspace-context"><i></i>{{ request.user.company.company_name|default:'Your workspace' }}</span><div><a href="/staff/manage/profile/myself" class="workspace-avatar" aria-label="My profile">{{ request.user.name|first|upper|default:'T' }}</a></div></div>
-{% if messages %}<div class="workspace-messages">{% for message in messages %}<div class="alert alert-{{ message.tags|default:'info' }}" role="status">{{ message }}</div>{% endfor %}</div>{% endif %}
+{% if messages %}<div class="workspace-messages">{% for message in messages %}<div class="alert alert-{{ message.tags|default:'info' }}" role="{% if message.level >= 30 %}alert{% else %}status{% endif %}">{{ message }}</div>{% endfor %}</div>{% endif %}
