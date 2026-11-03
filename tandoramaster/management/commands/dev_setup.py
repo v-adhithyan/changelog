@@ -13,7 +13,7 @@ class Command(BaseCommand):
             "email": "test@localhost.com",
             "password": "Dev@123.",
             "name": "Adhithyan",
-            "company_name": "Tandora Dev",
+            "company_name": "tandoradev",
             "website": "https://tandora.co",
             "changelog_terminology": "test",
             "use_case": "c",

@@ -8,6 +8,15 @@ Developed using Python, Django and Django Rest Framework
 
 ## Setup
 
+`docker compose up -d --build` starts the local development stack at http://localhost:8001.
+Set `CHANGELOG_PORT` to override the default local port 8001.
+Migrations run automatically after PostgreSQL becomes healthy. `dev.yml` provides the same configuration for older workflows.
+The legacy production configuration remains in `prod.yml`.
+
+The shared `tandora-payanpaadu` dependency is pinned to its version 2.0.2 source commit
+on GitHub, replacing the unavailable S3 archive.
+
+
 - Clone this repo
     `git clone https://github.com/tandoraco/changelog.git`
 - cd to this repo in terminal
@@ -15,32 +24,32 @@ Developed using Python, Django and Django Rest Framework
 - Copy the contents of file sample.env to .env
     - `cp sample.env .env`
 - Start the service by using the following command
-    - `docker-compose -f dev.yml up`
+    - `docker compose -f dev.yml up`
 - After the server starts, type the following commands to run migrations and populate initial data
-    - `docker exec -it changelog_web_1 /bin/sh`
+    - `docker compose exec web /bin/sh`
     - `python manage.py migrate`
     - `python manage.py dev_setup`
         - Closely watch the output of terminal logs. There will be a line containing Click this (some url) to verify your account.
         - Copy that verification url and paste in browser to activate your user account.
-- Now visit [http://localhost:8000](http://localhost:8000) in browser.
+- Now visit [http://localhost:8001](http://localhost:8001) in browser.
 - For credentials to login refer this file `tandoramaster/management/commands/dev_setup.py`
 
 
 ## Running locally after setup
 - Issue this command in terminal at the root of repo
-    - `docker-compose -f dev.yml up -d`
+    - `docker compose -f dev.yml up -d`
 
 ## Running tests locally
 
 Run the following commands to run test suite.
-- `docker exec -it changelog_web_1 /bin/sh`
+- `docker compose exec web /bin/sh`
 - `pytest`
 
 ## Activating admin
--  If you hit http://localhost:8000/admin/ without performing the following steps, the default credentials would not take you
+-  If you hit http://localhost:8001/admin/ without performing the following steps, the default credentials would not take you
 to admin page. You should make yourselves a super user to access admin.
 - Perform the following
-    - `docker exec -it changelog_web_1 /bin/sh`
+    - `docker compose exec web /bin/sh`
     - `python manage.py shell`
     ```python
     In [1]: from v1.accounts.models import User
@@ -53,7 +62,7 @@ to admin page. You should make yourselves a super user to access admin.
 
 ## Debugging in dev
 
-- When you up the container using `docker-compose -f dev.yml up` ipdb cannot be used. So stop the container using `docker-compose -f dev.yml stop` and then start the containers in detached mode. `docker-compose -f dev.yml up -d`
+- When you up the container using `docker compose -f dev.yml up` ipdb cannot be used. So stop the container using `docker-compose -f dev.yml stop` and then start the containers in detached mode. `docker compose -f dev.yml up -d`
 - Now attach to the web container. `docker attach changelog_web_1`
 - Now ipdb can be used in the attached container.
 

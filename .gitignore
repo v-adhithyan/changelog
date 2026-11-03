@@ -436,3 +436,7 @@ newrelic.ini
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Track the local Docker startup script.
+!commons/scripts/
+!commons/scripts/entrypoint-dev.sh

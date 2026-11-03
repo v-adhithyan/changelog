@@ -2,11 +2,10 @@
 
 from django.db import migrations
 
-from v1.accounts.models import Company
-
 
 def add_is_first_login_to_company_settings(apps, schema_editor):
-    for company in Company.objects.all():
+    Company = apps.get_model("v1", "Company")
+    for company in Company.objects.using(schema_editor.connection.alias).all():
         settings = company.settings
         settings['is_first_login'] = False
         company.settings = settings

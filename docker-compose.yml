@@ -1,37 +1,34 @@
-version: '3.7'
-
+# Local development. Production deployment is configured in prod.yml.
 services:
   db:
     image: postgres:10.1-alpine
+    environment:
+      POSTGRES_PASSWORD: changelog-local
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
   web:
     build: .
-    entrypoint: /bin/sh /code/commons/scripts/entrypoint.sh
+    entrypoint: /bin/sh /code/commons/scripts/entrypoint-dev.sh
+    environment:
+      DEBUG: "1"
+      DB_HOST: db
+      DB_PASSWORD: changelog-local
+      TANDORA_CHANGELOG_KEY: ""
+      HOST: "http://localhost:${CHANGELOG_PORT:-8001}/"
     volumes:
       - .:/code
-    expose:
-      - 8000
-    depends_on:
-      - db
-  letsencrypt:
-    image: linuxserver/letsencrypt
     ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./config/letsencrypt:/config
-    environment:
-      - EMAIL=admin@tandora.co
-      - URL=localhost
-      - SUBDOMAINS=www,api
-      - ONLY_SUBDOMAINS=true
-      - VALIDATION=http
-      - TZ=Asia/Kolkata
-      - PUID=1000
-      - PGID=1000
+      - "127.0.0.1:${CHANGELOG_PORT:-8001}:8000"
     depends_on:
-      - web
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
 
 volumes:
   postgres_data:

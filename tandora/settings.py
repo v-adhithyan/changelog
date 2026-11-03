@@ -247,7 +247,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = 'attachments'
 AWS_DEFAULT_ACL = 'public-read'
 
-HOST = "http://localhost:8000/" if DEBUG else os.environ.get('HOST')
+HOST = os.environ.get('HOST') or ("http://localhost:8000/" if DEBUG else None)
 
 # SITE_ID = 1
 
