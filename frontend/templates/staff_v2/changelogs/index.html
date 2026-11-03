@@ -1,38 +1,18 @@
-<!DOCTYPE HTML>
-{% load static %}
-{% load frontend_tags %}
-{% load humanize %}
-<html>
-<head>
-    {% if request.user.company.use_case == 'c' %}
-    <title>{{ request.user.company.company_name }} Changelog</title>
-    {% endif %}
-    {% if request.user.company.use_case == 's' %}
-    <title>{{ request.user.company.company_name }} Web builder</title>
-    {% endif %}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Arimo|Nunito|Rubik|Open+Sans&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    {% include 'staff_v2/menu_postlogin.html' %}
+{% extends "staff_v2/base.html" %}
+{% load static frontend_tags humanize %}
+{% block content %}
+{% include 'staff_v2/menu_postlogin.html' %}
     <section class="section-wrapper listing-page">
-        <div class="container mb-3 mt-3">
-            <!--div class="row d-flex  justify-content-end">
-                <div class="list-button ">
-                    <button class="btn btn-primary btn-list"><img src="{% static 'branding/list.svg' %}"></button>
-                    <button class="btn btn-primary btn-grid"><img src="{% static 'branding/view.svg' %}"></button>
-                </div>
-            </div-->
-        </div>
+        <div class="container page-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h1>Every update. One place.</h1><p>Keep your customers in the loop, one release at a time.</p></div><a class="glass-primary" href="/staff/create-changelog">＋ New update</a></div>
+        <div class="container"><div class="overview-strip"><div><span>{{ object_list|length }}</span><small>Total updates</small></div><div><span>{{ request.user.company.company_name }}</span><small>Workspace</small></div><a href="{% public_page_url %}" target="_blank" rel="noopener">Open your public page ↗</a></div></div>
         <div class="container grid-container">
             <div class="row">
                 {% for changelog in object_list %}
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="card listing">
-                        <div class="listing-text Doctorparoma-text">
-                            <h3>{{ changelog.title|truncatechars:30 }}</h3><h3><span style="color: white; background-color: {{ changelog.category.color }}; margin: 0;">{{ changelog.category.name }}</span></h3>
+                        {% if changelog.featured_image %}<img class="update-cover" src="{{ changelog.featured_image.url }}" alt="">{% endif %}
+                        <div class="listing-text Doctorparoma-text"><div class="update-status {% if changelog.published %}is-published{% endif %}">{% if changelog.published %}Published{% else %}Draft{% endif %}</div>
+                            <h3>{{ changelog.title }}</h3><h3><span style="color: white; background-color: {{ changelog.category.color }}; margin: 0;">{{ changelog.category.name }}</span></h3>
                             <h4>created: {{ changelog.created_at|naturaltime }}</h4>
                             <p>{{ changelog.content|extract_text_and_truncate }} ..</p>
                             <div class="listing-button">
@@ -51,10 +31,11 @@
                         </div>
                     </div>
                 </div>
+                {% empty %}<div class="col-12"><div class="empty-panel"><h2>Your next big announcement starts here.</h2><p>Create your first update and keep your customers in the loop.</p><a class="glass-primary" href="/staff/create-changelog">Create an update</a></div></div>
                 {% endfor %}
-                <!--{ % include "public_v2/pagination.html" %}-->
+                {% if is_paginated %}<nav class="workspace-pagination" aria-label="Update pages">{% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">← Previous</a>{% endif %}<span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>{% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Next →</a>{% endif %}</nav>{% endif %}
             </div>
         </div>
     </section>
-</body>
-</html>
+
+{% endblock %}

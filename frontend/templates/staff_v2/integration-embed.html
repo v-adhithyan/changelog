@@ -1,0 +1,5 @@
+{% extends "staff_v2/base.html" %}
+{% block content %}
+{% include 'staff_v2/menu_postlogin.html' %}
+<section class="section-wrapper"><div class="container"><div class="page-heading"><div><p class="eyebrow">CONNECTED WORKFLOWS</p><h1>{{ title }}</h1><p>Connect your updates to the tools your team already uses.</p></div><a href="/staff/manage/integrations" class="glass-primary">Back to integrations</a></div><div class="update-preview"><div class="preview-content">{{ embed|safe }}</div></div></div></section>
+{% endblock %}

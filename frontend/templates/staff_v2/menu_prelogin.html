@@ -1,22 +1,2 @@
 {% load static %}
-<header class="fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav13"
-                aria-controls="basicExampleNav13" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/"><img src="{% static 'branding/tandora-logo.png' %}" alt="logo"></a>
-        <div class="collapse navbar-menu navbar-collapse" id="basicExampleNav13">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/login" class="nav-link active">Sign in</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/signup" class="nav-link register-button">Claim your free link</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<header class="auth-nav"><a class="workspace-brand" href="/login"><img src="{% static 'branding/tandora-logo.png' %}" alt="Tandora"><span>Tandora<small>Your updates, amplified.</small></span></a><nav aria-label="Account navigation"><a href="/login">Sign in</a><a class="auth-signup" href="/signup">Create an account <span>↗</span></a></nav></header>

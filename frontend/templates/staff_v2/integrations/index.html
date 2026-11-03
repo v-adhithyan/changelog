@@ -19,7 +19,7 @@
                         <div class="col-12 col-md-6 col-lg-6">
                             <div class="card listing">
                                 <div class="listing-text Doctorparoma-text">
-                                    <h3><img src="{{ 'logo'|get_integration_meta:integration }}" style="height:50px;"></h3>
+                                    <div class="integration-monogram" aria-hidden="true">{{ integration|first|upper }}</div><h3>{{ integration|title }}</h3>
                                     <p>{{ 'description'|get_integration_meta:integration|ul_list|safe }}</p>
                                     <div class="listing-button">
                                         <ul>

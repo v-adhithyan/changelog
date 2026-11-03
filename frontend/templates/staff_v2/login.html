@@ -18,8 +18,8 @@
             <div class="row align-center">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-7">
                     <div class="title">
-                        <h2>Login to access <br><span>Byo</span> Link.</h2>
-                        <p>Claim your free link <a href="/signup">here! </a></p>
+                        <p class="eyebrow">GOOD TO SEE YOU AGAIN</p><h2>Small updates.<br><span>Big connections.</span></h2>
+                        <p>Share what’s new. Keep your customers close.</p>
                     </div>
                     <div class="profile-image">
                         <img src="{% static 'branding/tandora-illustration.png' %}" alt="profile-image">
@@ -27,17 +27,17 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5">
                     <div class="signin-form">
-                        <div class="account-content">
+                        <div class="account-content"><div class="form-heading"><span class="form-kicker">YOUR WORKSPACE AWAITS</span><h1>Welcome back</h1><p>Sign in to pick up where you left off.</p></div>
                             <form method="post" class="form" id="login_form" action="/login">
                                {% csrf_token %}
                                 {{ form|crispy }}
                                 <div class="remember wow fadeInRight" data-wow-delay="0.4s">
-                                    <a class="forgot-pass" href="/forgot-password">Forgot Password ?</a>
+                                    <a class="forgot-pass" href="/forgot-password">Forgot password?</a>
                                 </div>
                                 <div class="theme-button">
-                                    <button type="submit" class="submit-btn">Sign In</button>
+                                    <button type="submit" class="submit-btn">Sign in to your workspace <span>→</span></button>
                                 </div>
-                            </form>
+                            </form><p class="auth-form-footer">New to Tandora? <a href="/signup">Create an account</a></p>
                             <!--div class="form-footer wow fadeIn" data-wow-delay="0.8s">
                                 <p class="border-bottom wow fadeIn" data-wow-delay="0.9s">
                                     <span> or cintinue with </span></p>

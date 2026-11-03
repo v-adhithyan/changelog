@@ -449,3 +449,7 @@ newrelic.ini
 # Public page styles and vendored dependencies.
 !frontend/static/public/
 !frontend/static/public/**
+
+# Shared staff interface assets.
+!frontend/static/staff/
+!frontend/static/staff/**

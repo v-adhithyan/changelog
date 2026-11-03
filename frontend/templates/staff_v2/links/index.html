@@ -5,14 +5,8 @@
     {% include 'staff_v2/menu_postlogin.html' %}
     <section class="section-wrapper listing-page">
         <div class="container">
+            <div class="page-heading"><div><p class="eyebrow">YOUR COMPANY, CONNECTED</p><h1>Links that lead somewhere.</h1><p>Bring your most useful destinations together.</p></div><a href="/staff/manage/links/create-link" class="glass-primary">＋ Add link</a></div>
             <div class="row align-center">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                    <div class="title">
-                        <h2>Manage Links<br><span><a style="color:blue;text-decoration:underline;"
-                                                          href="/staff/manage/links/create-link">Add Link</a></span>
-                        </h2>
-                    </div>
-                </div>
                 <div class="container grid-container">
                     <div class="row">
                         {% for link in object_list %}

@@ -186,7 +186,7 @@ def integration_form(request, integration):
 def embed_details(request, integration):
     try:
         context = INTEGRATION_EMBED_DICT[integration.lower()]
-        return render(request, 'staff/integration-embed.html', context=context)
+        return render(request, 'staff_v2/integration-embed.html', context=context)
     except KeyError:
         raise Http404
 

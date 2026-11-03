@@ -1,38 +1,6 @@
 {% extends "staff_v2/base.html" %}
 {% load humanize %}
 {% block content %}
-<div class="main-wrapper">
-    {% include 'staff_v2/menu_postlogin.html' %}
-    <section class="section-doctorparoma-details">
-        <div class="doctorparoma-details-title">
-            <h3>{{ changelog.title }}</h3>
-            </divh>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="doctorparoma-details" style="background-color:#F7F7F7;">
-                            <div class="doctorparoma-top">
-                                <a style="color: white; background-color: {{ changelog.category.color }};" href="#">{{ changelog.category.name }}</a>
-                                <span id="changelog-view-count">Views: {{ changelog.view_count }}</span>
-                                <span>Created: {{ changelog.created_at|naturaltime }}</span>
-                            </div>
-                        </div>
-                        <div class="doctorparoma-message">
-                                {{ changelog.content|safe }}
-                        </div>
-                        <br><div>
-                            <h4><a href="/staff/edit-changelog/{{ changelog.id }}" style="color:blue;text-decoration:underline;">Edit</a></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-</div>
-<script>
-    let categoryDiv = document.getElementById('div_id_category');
-    categoryDiv.classList.add('dropdown_box');
-    let publishDiv = document.getElementById('div_id_published');
-    publishDiv.classList.add('inputWithIcon')
-    publishDiv.classList.add('inputIconBg');
-</script>
+{% include 'staff_v2/menu_postlogin.html' %}
+<section class="section-wrapper"><div class="container"><div class="page-heading"><div><p class="eyebrow">UPDATE PREVIEW</p><h1>{{ changelog.title }}</h1><p>{{ changelog.category.name }} · {{ changelog.created_at|naturaltime }} · {{ changelog.view_count }} views</p></div><a href="/staff/edit-changelog/{{ changelog.id }}" class="glass-primary">Edit update ↗</a></div><article class="update-preview">{% if changelog.featured_image %}<img class="preview-cover" src="{{ changelog.featured_image.url }}" alt="">{% endif %}<div class="preview-content">{{ changelog.content|safe }}</div></article></div></section>
 {% endblock %}
